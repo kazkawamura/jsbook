@@ -1,0 +1,4 @@
+{
+  "name": "large-lib",
+  "main": "./startup.js"
+}
