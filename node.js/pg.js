@@ -2,7 +2,6 @@ var http = require('http');
 var url = require('url');
 var pg = require('pg');
 http.createServer(function (req, res) {
-  console.log('url: ' + req.url);
   var firstname = url.parse(req.url, true).query['firstname'];
   var lastname = url.parse(req.url, true).query['lastname'];
   var conString = "tcp://demo:demo@localhost/demo";
@@ -13,8 +12,6 @@ http.createServer(function (req, res) {
       'INSERT INTO member (firstname, lastname) VALUES($1, $2)',
       [firstname, lastname],
       function(err, result) {
-        console.log('error: ' + err);
-        console.log('result: ' + result);
         var query = client.query('SELECT firstname, lastname FROM member');
         query.on('row',  function(row) {
           res.write(row.firstname + ' ' + row.lastname + '\n');
