@@ -4,7 +4,7 @@ var pg = require('pg');
 http.createServer(function (req, res) {
   var firstname = url.parse(req.url, true).query['firstname'];
   var lastname = url.parse(req.url, true).query['lastname'];
-  var conString = "tcp://demo:demo@localhost/demo";
+  var conString = "postgres://demo:demo@localhost:5432/demo";
   res.writeHead(200, {'Content-Type': 'text/plain; charset=utf-8'});
   res.write('Hello ' + firstname + '\n');
   pg.connect(conString, function(err, client) {
