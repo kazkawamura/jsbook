@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express.createServer();
 app.use(express.cookieParser());
-app.use(express.session({secret: 'himitsu'}));
+app.use(express.session({secret: 'himitsu', cookie: {maxAge: 60000}}));
 app.get('/hello/:name', function(req, res) {
   var name = req.params.name;
   req.session.name = name;
