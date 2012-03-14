@@ -1,0 +1,6 @@
+!!!
+%html
+  %head
+    %title= title + ' : hamljs'
+  %body
+    %p= 'Hello ' + name + '!'
