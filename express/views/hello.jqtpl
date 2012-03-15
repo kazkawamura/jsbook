@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>${title} : ejs</title>
+    <title>${title} : jQuery Template</title>
   </head>
   <body>
     <p>Hello ${name}</p>
