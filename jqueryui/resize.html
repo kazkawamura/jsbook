@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Resize</title>
+  <link type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />	
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+  <script type="text/javascript">
+$(function(){
+  $( "#resizable" ).resizable({
+    resize: function(event, ui) {
+      $(this).find("div").text("width: " + ui.size.width + "px height: " + ui.size.height + "px");
+    }
+  });
+});
+  </script>
+  <style type="text/css">
+#resizable {width: 150px; height: 150px;}
+#resizable p {text-align: center; margin: 0;}
+  </style>	
+</head>
+<body>
+  <div id="resizable" class="ui-widget-content">
+    <p class="ui-widget-header">Resizable</p>
+    <div></div>
+</div>
+</body>
+</html>
