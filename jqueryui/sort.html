@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Select</title>
+  <link type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />	
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+  <script type="text/javascript">
+$(function(){
+  $( "#sortable" ).sortable({
+    stop: function() {
+      var result = $('#result').text('Your best is ');
+      result.append($('#sortable > li').first().text());
+      result.append(' and your worst is ');
+      result.append($('#sortable > li').last().text());
+    },
+    placeholder: "placeholder"
+  });
+});
+  </script>
+  <style type="text/css">
+#sortable {list-style-type: none; width: 100px; text-align: center;}
+#sortable li {height: 1.5em; line-height: 1.2em;}
+.ui-sortable-helper {background-color: orange; color: white;}
+.fruit {border: 1px dotted gray}
+.placeholder {background-color: Bisque; height: 1.5em; line-height: 1.2em;}
+  </style>	
+</head>
+<body>
+  <ol id="sortable">
+    <li class="fruit">Apple</li>
+    <li class="fruit">Orange</li>
+    <li class="fruit">Peach</li>
+    <li class="fruit">Kiwi</li>
+    <li class="fruit">Blueberry</li>
+    <li class="fruit">Pineapple</li>
+  </ol>
+  <div id="result">Order you like.</div>
+</body>
+</html>
