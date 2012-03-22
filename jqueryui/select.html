@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Select</title>
+  <link type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />	
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+  <script type="text/javascript">
+$(function(){
+  $( "#selectable" ).selectable({
+    stop: function(event, ui) {
+      var result = $("#result").text("You like");
+      $(".ui-selected", this).each(function() {
+        result.append(" " + $(this).text());
+      });
+    }
+  });
+});
+  </script>
+  <style type="text/css">
+#selectable .ui-selecting { background: #FECA40; }
+#selectable .ui-selected { background: #F39814; color: white; }
+#selectable { list-style-type: none; width: 100px; text-align: center;}
+  </style>	
+</head>
+<body>
+  <ol id="selectable">
+    <li class="ui-widget-content">Apple</li>
+    <li class="ui-widget-content">Orange</li>
+    <li class="ui-widget-content">Peach</li>
+    <li class="ui-widget-content">Kiwi</li>
+    <li class="ui-widget-content">Blueberry</li>
+    <li class="ui-widget-content">Pineapple</li>
+  </ol>
+  <div id="result">Select your favorite fruits.</div>
+</body>
+</html>
