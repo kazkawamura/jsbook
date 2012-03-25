@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Auto Complete</title>
+  <link type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />	
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+  <script type="text/javascript">
+$(function(){
+  var fruits = [
+    'Apple',
+    'Orange',
+    'Peach',
+    'Pear',
+    'Blueberry',
+    'Pineapple'
+  ];
+  $('#fruit').autocomplete({
+    minLength: 2,
+    source: function(req, res) {
+      var result = Array();
+      for (var i = 0; i < fruits.length; i++) {
+        if (fruits[i].indexOf(req.term) == 0) {result.push(fruits[i]);}
+      }
+      res(result);
+    }
+  });
+});
+  </script>
+</head>
+<body>
+  <label for="fruit">Your favorite fruit: </label>
+  <input id="fruit"/>
+</body>
+</html>
