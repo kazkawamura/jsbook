@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Button</title>
+  <link type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />	
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+  <script type="text/javascript">
+$(function(){
+  $('#submit').button();
+  $('#withicon').button({
+    icons: {primary: "ui-icon-locked"}
+  });
+  $('#toggle').button();
+  $('#radio').buttonset();
+  $('#checkbox').buttonset();
+});
+  </script>
+  <style type="text/css">
+  </style>	
+</head>
+<body>
+  <div>
+    <input id="submit" type="submit" value="A submit button"/>
+    <button id="withicon">Button with icon</button>
+    <input id="toggle" type="checkbox"/><label for="toggle">toggle</label>
+  </div>
+  <div id="checkbox">
+    <input id="check1" type="checkbox"/><label for="check1">c</label>
+    <input id="check2" type="checkbox"/><label for="check2">h</label>
+    <input id="check3" type="checkbox"/><label for="check3">e</label>
+    <input id="check4" type="checkbox"/><label for="check4">c</label>
+    <input id="check5" type="checkbox"/><label for="check5">k</label>
+  </div>
+  <div id="radio">
+    <input id="radio1" type="radio" name="radio"/><label for="radio1">r</label>
+    <input id="radio2" type="radio" name="radio"/><label for="radio2">a</label>
+    <input id="radio3" type="radio" name="radio"/><label for="radio3">d</label>
+    <input id="radio4" type="radio" name="radio"/><label for="radio4">i</label>
+    <input id="radio5" type="radio" name="radio"/><label for="radio5">o</label>    
+  </div>
+</body>
+</html>
