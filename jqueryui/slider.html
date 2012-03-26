@@ -17,15 +17,13 @@ $(function(){
     values: [ 5000, 10000 ],
     slide: function( event, ui ) {
       $( "#result" ).text("価格: " + ui.values[ 0 ] + "円 - " + 
-ui.values[ 1 ] + "円");
+                                    ui.values[ 1 ] + "円");
     }
   });
   $( "#result" ).text("価格: " + $("#slider").slider("values", 0) + "円 - " + 
-                      $("#slider").slider("values", 1) + "円");
+                               $("#slider").slider("values", 1) + "円");
 });
   </script>
-  <style type="text/css">
-  </style>  
 </head>
 <body>
   <div id="slider"></div>
