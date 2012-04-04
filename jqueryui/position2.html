@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" 
+        content="text/html; charset=utf-8" />
+  <title>Position2</title>
+  <link type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />	
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+  <script type="text/javascript">
+$(function(){
+  $('#left').position({of: $('#parent'), at: 'left top', my: 'left center'})
+  $('#right').position({of: $('#parent'), at: 'left bottom', my: 'right center'})
+  $('#top').position({of: $('#parent'), at: 'right bottom', my: 'center top'})
+  $('#bottom').position({of: $('#parent'), at: 'right top', my: 'center bottom'})
+  $('#center').position({of: $('#parent'), at: 'left center', my: 'center center'})
+  $('#center2').position({of: $('#parent'), at: 'right center', my: 'center center'})
+});
+  </script>
+  <style type="text/css">
+#parent { 
+  width: 150px; 
+  height: 150px;
+  top: 50px;
+  left: 50px;
+  position: absolute;
+  display: block;
+  text-align: center;
+  vertical-align: middle;
+  background-color: DarkSeaGreen;
+}  
+.positionable { 
+  width: 50px; 
+  height: 50px;
+  position: absolute;
+  display: block;
+  text-align: center;
+  vertical-align: middle;
+}
+  </style>
+</head>
+<body>
+  <div id="parent">Parent</div>
+  <div id="left" class="positionable" style="background-color: #FFF555;">Left</div>
+  <div id="right" class="positionable" style="background-color: #FF6555;">Right</div>
+  <div id="top" class="positionable" style="background-color: #FFA5A5;">Top</div>
+  <div id="bottom" class="positionable" style="background-color: #FFA505;">Bottom</div>
+  <div id="center" class="positionable" style="background-color: #FFA555;">Center</div>
+  <div id="center2" class="positionable" style="background-color: #FFA555;">Center</div>
+</body>
+</html>
