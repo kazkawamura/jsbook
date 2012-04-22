@@ -1,0 +1,30 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+  <title>Dialog sample</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+  <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+</head> 
+<body> 
+<div data-role="page" id="one">
+  <div data-role="header">
+    <h1>One</h1>
+  </div>
+  <div data-role="content">	
+    <p>This is page one.</p>
+    <p><a href="#dialog">Pop up Dialog</a></p>
+  </div>
+</div>
+<div data-role="dialog" id="dialog">
+  <div data-role="header">
+    <h1>Dialog</h1>
+  </div>
+  <div data-role="content">	
+    <p>This is dialog.</p>		
+    <p><a href="#" data-rel="back">Back to page one</a></p>
+  </div>
+</div>
+</body>
+</html>
