@@ -1,0 +1,32 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+  <title>Drag & Drop Sample</title> 
+  <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script>
+$(document).ready(function() {
+  $('#target').bind('drop', function(event) {
+    event.preventDefault();
+    var data = event.originalEvent.dataTransfer.getData('Text');
+    $('#target').html( "Hello " + data );
+  });
+  $('#target').bind('dragover', function(event) {
+    event.preventDefault();
+  });
+  $('.draggable').bind('dragstart', function(event) {
+    event.originalEvent.dataTransfer.setData('Text', $(event.target).text());
+  });
+});
+  </script>
+  <style type="text/css">
+.draggable {width: 50px; height: 30px; margin: 10px; float: left; 
+            text-align: center; background-color: blue; color: white;}
+.droppable {width: 150px; height: 150px; border: inset 5px black; float: left;}
+  </style>	
+</head>
+<body>
+  <div id="taro" draggable="true" class="draggable">Taro</div>
+  <div id="jiro" draggable="true" class="draggable">Jiro</div>
+  <div id="target" class="droppable">Drop here</div>
+</body>
+</html>
