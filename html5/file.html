@@ -1,0 +1,26 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+  <title>File API Sample</title> 
+  <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script>
+$(document).ready(function() {
+  $('#upload').bind('change', function(event) {
+    var file = event.target.files[0];
+    var reader = FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function(e) {
+      $('#imagepane').empty().append($('<img/>').attr('src', e.target.result));
+    };
+  });
+});
+  </script>
+</head> 
+<body> 
+  <form>
+    <input id="upload" name="upload" type="file"/>
+  </form>
+  <div id="imagepane">
+</div>
+</body>
+</html>
