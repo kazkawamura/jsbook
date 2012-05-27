@@ -1,0 +1,35 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+  <title>Camera Capture Sample</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+  <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+  <script>
+$(document).bind("pageinit", function() {
+  $('#upload').bind('change', function(event) {
+    var file = event.target.files[0];
+    var reader = FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function(e) {
+      $('#imagepane').empty().append($('<img/>').attr('src', e.target.result));
+    };
+  });
+});
+  </script>
+</head> 
+<body> 
+<div data-role="page">
+  <div data-role="header">
+    <h1>Upload Image From Camera</h1>
+  </div>
+  <div data-role="content">
+    <form>
+      <input id="upload" name="upload" type="file" accept="image/*" capture="camera"/>
+    </form>
+    <div id="imagepane">
+  </div>
+</div>
+</body>
+</html>
