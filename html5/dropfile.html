@@ -1,0 +1,40 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+  <title>File API Sample</title> 
+  <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script>
+$(document).ready(function() {
+  $('#drop').bind('drop', function(event) {
+    event.preventDefault();
+    var file = event.originalEvent.dataTransfer.files[0];
+    var reader = FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function(e) {
+      $('#imagepane').empty().append($('<img/>').attr('src', e.target.result));
+    };
+  });
+  $('#drop').bind('dragover', function(event) {
+    var type = event.originalEvent.dataTransfer.types.contains("Files");
+    if (type){
+        event.preventDefault();
+    }
+  });
+});
+  </script>
+  <style type="text/css">
+.droppable {
+  width: 100px;
+  height: 100px;
+  background-color: orange;
+}
+  </style>
+</head> 
+<body> 
+  <form>
+    <div id="drop" class="droppable">ここに画像をドロップ！</div>
+  </form>
+  <div id="imagepane">
+</div>
+</body>
+</html>
