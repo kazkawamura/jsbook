@@ -12,7 +12,6 @@ http.createServer(function handler(req, res) {
     });
 
     function response(id, data) {
-        res.write("id:" + id + "\n\n");  
         res.write("data:" + data + "\n\n");  
         res.end();      
         emitter.removeListener("generated", arguments.callee);
