@@ -1,0 +1,19 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+  <title>ServerSides Event Sample</title> 
+  <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script>
+$(document).ready(function() {
+  var source = new EventSource('/events');
+  source.onmessage = function(event) {
+    $('#result').append('<p>' + event.data + '</p>');
+  }
+});
+  </script>
+</head> 
+<body> 
+<div id="result">
+</div>
+</body>
+</html>
