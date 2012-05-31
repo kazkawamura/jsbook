@@ -1,0 +1,30 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+  <title>Web Storage Sample</title> 
+  <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script>
+$(document).ready(function() {
+  $("#localValue").text(localStorage.getItem('sample'));
+  $("#sessionValue").text(sessionStorage.getItem('sample'));
+  $("#local").bind('click', function() {
+    localStorage.setItem('sample', $("#input").val());
+    $("#localValue").text(localStorage.getItem('sample'));  
+  });
+  $("#session").bind('click', function() {
+    sessionStorage.setItem('sample', $("#input").val());
+    $("#sessionValue").text(sessionStorage.getItem('sample'));  
+  });
+});
+  </script>
+</head> 
+<body> 
+  <form>
+    <input id="input" name="input"/>
+    <input id="local" name="local" type="button" value="save to local"/>
+    <input id="session" name="session" type="button" value="save to session"/>
+  </form>
+  <div>Read from local: sample-><span id="localValue"></span></div>
+  <div>Read from session: sample-><span id="sessionValue"></span></div>
+</body>
+</html>
