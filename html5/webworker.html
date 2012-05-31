@@ -1,0 +1,24 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+  <title>WebWorker Sample</title> 
+  <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script>
+$(document).ready(function() {
+  var worker = new Worker('webworker.js');
+  worker.onmessage = function(event) {
+    alert(event.data);
+  }
+  $('#start').bind('click', function(event) {
+    worker.postMessage($('#name').val());
+  });
+});
+  </script>
+</head> 
+<body> 
+  <form>
+    <input id="name" name="name"/>
+    <input id="start" name="start" type="button" value="send"/>
+  </form>
+</body>
+</html>
