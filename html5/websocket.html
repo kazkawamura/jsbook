@@ -1,0 +1,25 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+  <title>WebSocket Sample</title> 
+  <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script>
+$(document).ready(function() {
+  var socket = new WebSocket('ws://localhost:8888/');
+  socket.onmessage = function (msg) {
+    $('#messages').append(msg.data + '<br/>');
+  };
+  $('#send').click(function() {
+    socket.send($('#input').val());
+  });
+});
+  </script>
+</head> 
+<body> 
+  <div>
+    <input id="input" name="input"/>
+    <input type="button" name="send" id="send" value="send"/>
+  </div>
+  <div id="messages"></div>
+</body>
+</html>
