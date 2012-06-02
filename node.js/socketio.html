@@ -1,0 +1,29 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+  <title>Socket.io Sample</title> 
+  <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script src="lib/socket.io.js"></script>
+  <script>
+var socket;
+$(document).ready(function() {
+  socket = io.connect('http://10.0.1.2:8889/');
+  socket.on('connect', function () {
+    socket.on('message', function (msg) {
+      $('#messages').append(msg + '<br/>');
+    });
+  });
+  $("#send").click(function(event, ui) {
+    socket.send($('#input').val());
+  });
+});
+  </script>
+</head> 
+<body> 
+  <div>
+    <input id="input" name="input" value=""/>
+    <input type="button" name="send" value="send" id="send"/>
+  </div>
+  <div id="messages"></div>
+</body>
+</html>
