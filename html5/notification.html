@@ -1,0 +1,32 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+  <title>Notification Sample</title> 
+  <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script>
+$(document).ready(function() {
+  $('#notify').bind('click', function(event) {
+    var permission = webkitNotifications.checkPermission();
+    switch (permission) {
+    case 0:
+      //var notification = new Notification("", "New Email Received");
+      var notification = webkitNotifications.createNotification("", "New Email Received", "You have 5 new mails");
+      notification.onshow = function() { setTimeout(notification.cancel(), 15000); }
+      notification.show();
+      break;
+    case 1:
+      webkitNotifications.requestPermission(function(){});
+      break;
+    case 2:
+      break;
+    }
+  });
+});
+  </script>
+</head> 
+<body> 
+  <form>
+    <input id="notify" name="notify" type="button" value="Get Notification"/>
+  </form>
+</body>
+</html>
