@@ -11,12 +11,11 @@ http.createServer(function handler(req, res) {
       'Connection': 'keep-alive'
     });
 
-    function response(id, data) {
-        res.write("data:" + data + "\n\n");  
-        res.end();      
-        emitter.removeListener("generated", arguments.callee);
-    }
-    emitter.on("generated", response);
+    emitter.on("generated", function(id, data) {
+      res.write("data:" + data + "\n\n");  
+      res.end();      
+      emitter.removeListener("generated", arguments.callee);
+    });
   } else {
     res.writeHead(200, {'Content-Type': 'text/html'});
     fs.readFile(__dirname + '/event.html', function(err, data) {
@@ -28,8 +27,8 @@ http.createServer(function handler(req, res) {
   }
 }).listen(8889);
 
-var id = 0;
 function start() {
+  var id = 0;
   setInterval(function() {
     emitter.emit("generated", id++, "Hello! Still there?");
   }, 10000);
