@@ -19,8 +19,12 @@ http.createServer(function handler(req, res) {
     emitter.on("generated", response);
   } else {
     res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write(fs.readFileSync(__dirname + '/event.html'));
-    res.end();
+    fs.readFile(__dirname + '/event.html', function(err, data) {
+      if (!err) {
+        res.write(data);
+      }
+      res.end();
+    });
   }
 }).listen(8889);
 

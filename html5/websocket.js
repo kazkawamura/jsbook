@@ -4,8 +4,12 @@ var WebSocketServer = require('websocket').server;
 
 var server = http.createServer(function(req, res) {
   res.writeHead(200, {'Content-Type': 'text/html'});
-  res.write(fs.readFileSync(__dirname + '/websocket.html'));
-  res.end();
+  fs.readFile(__dirname + '/websocket.html', function(err, data) {
+    if (!err) {
+      res.write(data);
+    }
+    res.end();
+  });
 });
 server.listen(8888, function(){console.log("server on 8888");});
 
