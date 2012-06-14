@@ -8,7 +8,7 @@ $(document).ready(function() {
   $('#notify').bind('click', function(event) {
     var permission = webkitNotifications.checkPermission();
     switch (permission) {
-    case 0:
+    case 0: //PERMISSION_ALLOWED
       //var notification = new Notification("", "New Email Received");
       var notification = webkitNotifications.createNotification("", "New Email Received", "You have 5 new mails");
       notification.onshow = function() {
@@ -18,10 +18,10 @@ $(document).ready(function() {
       }
       notification.show();
       break;
-    case 1:
+    case 1: //PERMISSION_NOT_ALLOWED
       webkitNotifications.requestPermission(function(){});
       break;
-    case 2:
+    case 2: //PERMISSION_DENIED
       break;
     }
   });
