@@ -6,26 +6,31 @@
   <script>
 $(document).ready(function() {
   $('#notify').bind('click', function(event) {
-    var permission = webkitNotifications.checkPermission();
-    switch (permission) {
-    case 0: //PERMISSION_ALLOWED
-      //var notification = new Notification("", "New Email Received");
-      var notification = webkitNotifications.createNotification("", "New Email Received", "You have 5 new mails");
-      notification.onshow = function() {
-        setTimeout(function() {
-          notification.cancel()
-        }, 15000);
-      }
-      notification.show();
-      break;
-    case 1: //PERMISSION_NOT_ALLOWED
-      webkitNotifications.requestPermission(function(){});
-      break;
-    case 2: //PERMISSION_DENIED
-      break;
-    }
+    notify();
   });
 });
+function notify() {
+  var permission = webkitNotifications.checkPermission();
+  switch (permission) {
+  case 0: //PERMISSION_ALLOWED
+    //var notification = new Notification("", "New Email Received");
+    var notification = webkitNotifications.createNotification("", "New Email Received", "You have 5 new mails");
+    notification.onshow = function() {
+      setTimeout(function() {
+        notification.cancel()
+      }, 15000);
+    }
+    notification.show();
+    break;
+  case 1: //PERMISSION_NOT_ALLOWED
+    webkitNotifications.requestPermission(function(){
+      notify();
+    });
+    break;
+  case 2: //PERMISSION_DENIED
+    break;
+  }
+}
   </script>
 </head> 
 <body> 
