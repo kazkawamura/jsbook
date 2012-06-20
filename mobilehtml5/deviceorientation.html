@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html> 
   <head> 
-  <title>Motion Sensor Sample</title> 
+  <title>Device Orientation Sample</title> 
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
   <style type="text/css">
@@ -20,18 +20,15 @@
 $(document).bind("pageinit", function() {
   window.addEventListener('deviceorientation', function(event) {
     var p = $('#box').position();
-    var top = p.top + event.beta;
-    if (top < 0) {top = 0};
-    if (top > 200) {top = 200};
-    var left = p.left + event.gamma;
-    if (left < 0) {left = 0};
-    if (left > 200) {left = 200};
+    var top = Math.min(Math.max(p.top + event.beta, 0), 
+                                window.innerHeight - $('#box').height());
+    var left = Math.min(Math.max(p.left + event.gamma, 0),
+                                 window.innerWidth - $('#box').width());
     $('#box').css('top', top).css('left', left);
   }, true);
   window.addEventListener('devicemotion', function(event) {
-    var width = $('#box').width();
-    $('#box').width(width + event.acceleration.z);
-    $('#box').height(width + event.acceleration.z);
+    $('#box').width($('#box').width() + event.acceleration.z);
+    $('#box').height($('#box').height() + event.acceleration.z);
   }, true); 
 });
   </script>
@@ -39,7 +36,7 @@ $(document).bind("pageinit", function() {
 <body> 
 <div data-role="page">
   <div data-role="header">
-    <h1>Motion Sensor</h1>
+    <h1>Device Orientation</h1>
   </div>
   <div data-role="content">
     <div id="box"></div>
