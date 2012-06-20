@@ -1,0 +1,46 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+  <title>Map Sample</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+  <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+  <script>
+$(document).bind("pageinit", function() {
+  var options = {
+    zoom: 12,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  map = new google.maps.Map(document.getElementById('map_canvas'), options);
+
+  navigator.geolocation.getCurrentPosition(function(position) {
+    var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    var marker = new google.maps.Marker({
+        position: pos, 
+        map: map,
+        title:"I'm here!"
+    });   
+    map.setCenter(pos);
+  });
+});
+  </script>
+  <style type="text/css">
+#map_canvas {
+  height: 300px;
+  width: 300px;
+}
+  </style>
+</head> 
+<body> 
+<div data-role="page">
+  <div data-role="header">
+    <h1>Map Sample</h1>
+  </div>
+  <div data-role="content">
+    <div id="map_canvas"></div>
+  </div>
+</div>
+</body>
+</html>

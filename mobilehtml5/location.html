@@ -11,7 +11,11 @@ $(document).bind("pageinit", function() {
   navigator.geolocation.getCurrentPosition(function(position) {
     $("#location").html("<p>緯度: " + position.coords.latitude + "</p>" + 
                         "<p>経度: " + position.coords.longitude + "</p>" +
+                        "<p>精度: " + position.coords.accuracy + "</p>" +
                         "<p>標高: " + position.coords.altitude + "</p>" +
+                        "<p>標高精度: " + position.coords.altitudeAccuracy + "</p>" +
+                        "<p>向き: " + position.coords.heading + "</p>" +
+                        "<p>速度: " + position.coords.speed + "</p>" +
                         "<p>時刻: " + new Date(position.timestamp).toLocaleString() + "</p>");
   });
 });
