@@ -6,10 +6,16 @@
   <script>
 $(document).ready(function() {
   $('#notify').bind('click', function(event) {
-    notify();
+    if (navigator.webkitNotifications) {
+      notifyOnChrome();
+    } else if (navigator.mozNotification) {
+      notifyOnMozilla();
+    } else {
+      alert('notification is not supported.');
+    }
   });
 });
-function notify() {
+function notifyOnChrome() {
   var permission = webkitNotifications.checkPermission();
   switch (permission) {
   case 0: //PERMISSION_ALLOWED
@@ -30,6 +36,10 @@ function notify() {
   case 2: //PERMISSION_DENIED
     break;
   }
+}
+function notifyOnMozilla() {
+  var notification = navigator.mozNotification.createNotification("New Email Received", "You have 5 new mails");
+  notification.show();
 }
   </script>
 </head> 
