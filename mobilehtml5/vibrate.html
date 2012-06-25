@@ -1,0 +1,33 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+  <title>Vibrate Sample</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+  <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+  <script>
+var vibrate = function() {alert('vibrate is not supported');};
+if (navigator.vibrate) vibrate = function(p) {navigator.vibrate(p);}
+if (navigator.mozVibrate) vibrate = function(p) {navigator.mozVibrate(p);}
+if (navigator.webkitVibrate) vibrate = function(p) {navigator.webkitVibrate(p);}
+$(document).bind("pageinit", function() {
+  $('#vibrate').click(function() {
+    vibrate(1000);
+  });
+});
+  </script>
+</head> 
+<body> 
+<div data-role="page">
+  <div data-role="header">
+    <h1>Vibrate</h1>
+  </div>
+  <div data-role="content">
+    <div>
+      <a id="vibrate" href="#" data-role="button" data-icon="check">Vibrate</a>
+     </div>
+  </div>
+</div>
+</body>
+</html>
