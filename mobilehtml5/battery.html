@@ -1,0 +1,44 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+  <title>Battery Status Sample</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+  <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+  <script>
+var battery = navigator.battery || navigator.mozBattery || navigator.webkitBattery;
+$(document).bind("pageinit", function() {
+  checkBattery();
+  if (battery) {
+    battery.addEventListener("chargingchange", checkBattery());
+    battery.addEventListener("levelchange", checkBattery());
+  }
+});
+function checkBattery() {
+  var msg;
+  if (battery) {
+    msg = "<p>Battery status: " + battery.level * 100 + " %</p>";
+    if (battery.charging) {
+      msg += "<p>Battery is charging. It would take " + battery.chargingTime +" sec.</p>";
+    } else {
+      msg += "<p>" + battery.dischargingTime + " sec remaining</p>";
+    }
+  } else {
+    msg = "<p>Battery status: unsupported</p>";
+  }
+  $('#battery').html(msg);
+}
+  </script>
+</head> 
+<body> 
+<div data-role="page">
+  <div data-role="header">
+    <h1>Battery Status</h1>
+  </div>
+  <div data-role="content">
+<div id="battery"></div>
+  </div>
+</div>
+</body>
+</html>
