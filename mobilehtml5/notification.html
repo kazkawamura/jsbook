@@ -8,7 +8,7 @@
   <script>
 $(document).ready(function() {
   $('#notify').bind('click', function(event) {
-    if (navigator.webkitNotifications) {
+    if (webkitNotifications) {
       notifyOnChrome();
     } else if (navigator.mozNotification) {
       notifyOnMozilla();
