@@ -2,7 +2,9 @@
 <html> 
   <head> 
   <title>Notification Sample</title> 
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
   <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
   <script>
 $(document).ready(function() {
   $('#notify').bind('click', function(event) {
@@ -44,8 +46,16 @@ function notifyOnMozilla() {
   </script>
 </head> 
 <body> 
-  <form>
-    <input id="notify" name="notify" type="button" value="Get Notification"/>
-  </form>
+<div data-role="page">
+  <div data-role="header">
+    <h1>Get Notification</h1>
+  </div>
+  <div data-role="content">
+    <form>
+      <input id="notify" name="notify" type="button" 
+             value="Get Notification"/>
+    </form>
+  </div>
+</div>
 </body>
 </html>
