@@ -2,13 +2,14 @@
 <html> 
   <head> 
   <title>Notification Sample</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
   <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
   <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
   <script>
-$(document).ready(function() {
+$(document).bind("pageinit", function() {
   $('#notify').bind('click', function(event) {
-    if (webkitNotifications) {
+    if (window.webkitNotifications) {
       notifyOnChrome();
     } else if (navigator.mozNotification) {
       notifyOnMozilla();
@@ -18,11 +19,11 @@ $(document).ready(function() {
   });
 });
 function notifyOnChrome() {
-  var permission = webkitNotifications.checkPermission();
+  var permission = window.webkitNotifications.checkPermission();
   switch (permission) {
   case 0: //PERMISSION_ALLOWED
     //var notification = new Notification("", "New Email Received");
-    var notification = webkitNotifications.createNotification("", "New Email Received", "You have 5 new mails");
+    var notification = window.webkitNotifications.createNotification("", "New Email Received", "You have 5 new mails");
     notification.onshow = function() {
       setTimeout(function() {
         notification.cancel()
@@ -31,7 +32,7 @@ function notifyOnChrome() {
     notification.show();
     break;
   case 1: //PERMISSION_NOT_ALLOWED
-    webkitNotifications.requestPermission(function(){
+    window.webkitNotifications.requestPermission(function(){
       notify();
     });
     break;
