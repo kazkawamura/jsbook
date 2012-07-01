@@ -13,7 +13,7 @@ if (navigator.mozVibrate) vibrate = function(p) {navigator.mozVibrate(p);}
 if (navigator.webkitVibrate) vibrate = function(p) {navigator.webkitVibrate(p);}
 $(document).bind("pageinit", function() {
   $('#vibrate').click(function() {
-    vibrate(1000);
+    vibrate([1000, 500, 2000]);
   });
 });
   </script>
