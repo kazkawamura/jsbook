@@ -12,14 +12,17 @@ $(document).bind("pageinit", function() {
   updateNetInfo();
 });
 window.ononline = window.onoffline = updateNetInfo;
+if (connection) {
+  connection.addEventListener("change", updateNetInfo);
+}
 function updateNetInfo() {
   if (connection) {
-    if (connection.type) {
+    if (connection.bandwidth) {
+      $('#net').text(connection.bandwidth);
+    } else if (connection.type) {
       var type = connection.type;
       var types = new Array("unknown", "ethernet", "wifi", "2g", "3g", "4g", "none");
       $('#net').text(types[type]);
-    } else if (connection.bandwidth) {
-      $('#net').text(connection.bandwidth);
     }
   } else {
     $('#net').text('unsupported');
