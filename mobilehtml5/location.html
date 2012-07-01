@@ -18,6 +18,9 @@ $(document).bind("pageinit", function() {
                         "<p>速度: " + position.coords.speed + "</p>" +
                         "<p>時刻: " + new Date(position.timestamp).toLocaleString() + "</p>");
   });
+}, function(error) {
+  $("#location").html("<p>code: " + error.code + "</p>" +
+                      "<p>message: " + error.message + "</p>");
 });
   </script>
 </head> 
