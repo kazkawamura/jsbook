@@ -9,8 +9,8 @@
   <script>
 $(document).bind("pageinit", function() {
   $('#notify').bind('click', function(event) {
-    if (window.webkitNotifications) {
-      notifyOnChrome();
+    if (window.Notification) {
+      notifyOnSpec();
     } else if (navigator.mozNotification) {
       notifyOnMozilla();
     } else {
@@ -18,31 +18,26 @@ $(document).bind("pageinit", function() {
     }
   });
 });
-function notifyOnChrome() {
-  var permission = window.webkitNotifications.checkPermission();
-  switch (permission) {
-  case 0: //PERMISSION_ALLOWED
-    //var notification = new Notification("", "New Email Received");
-    var notification = window.webkitNotifications.createNotification("", "New Email Received", "You have 5 new mails");
-    notification.onshow = function() {
-      setTimeout(function() {
-        notification.cancel()
-      }, 15000);
-    }
-    notification.show();
-    break;
-  case 1: //PERMISSION_NOT_ALLOWED
-    window.webkitNotifications.requestPermission(function(){
-      notify();
-    });
-    break;
-  case 2: //PERMISSION_DENIED
-    break;
-  }
-}
 function notifyOnMozilla() {
   var notification = navigator.mozNotification.createNotification("New Email Received", "You have 5 new mails");
   notification.show();
+}
+function notifyOnSpec() {
+  var notification = new Notification("New Email Received", {
+    body: "You have 5 new mails"
+  });
+  notification.onshow = function() {
+    setTimeout(function() {notification.close()}, 15000);
+  }
+  notification.onerror = function() {
+    if (notification.permission == "default") {
+      notification.requestPermission(function(permission) {
+        if (permission == "granted") {
+          notifyOnSpec();
+        }
+      });
+    }
+  }
 }
   </script>
 </head> 
