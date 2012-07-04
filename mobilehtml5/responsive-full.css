@@ -1,0 +1,27 @@
+#pagewrap {
+  width: 980px;
+  margin: 0 auto;
+  background-color: gray;
+}
+#header {
+  width: 900px;
+  height: 80px;
+  margin: auto;
+  background-color: blue;
+}
+#content {
+  width: 600px;
+  height: 200px; /*dummy*/
+  float: left;
+  background-color: orange;
+}
+#sidebar {
+  width: 280px;
+  height: 100px; /*dummy*/
+  float: right;
+  background-color: red;
+}
+#footer {
+  clear: both;
+  background-color: green;
+}

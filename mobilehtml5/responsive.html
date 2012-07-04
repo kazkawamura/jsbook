@@ -1,0 +1,26 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+  <title>Fit content to the device width</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <link rel="stylesheet" href="responsive-full.css">
+  <link rel="stylesheet" href="responsive-middle.css" media="screen and (max-width: 980px)">
+  <link rel="stylesheet" href="responsive-small.css" media="screen and (max-width: 480px)">
+  <script >
+$(function(){
+  $(window).bind("orientationchange load resize",function(){
+    $('#footer').text('footer width: ' + $(window).width());
+  });
+});
+  </script>
+</head> 
+<body> 
+<div id="pagewrap">
+  <header id="header">This is header</header>
+  <div id="content">Main Contents</div>
+  <aside id="sidebar">Sidebar</aside>
+  <footer id="footer">footer</footer>
+</div>
+</body>
+</html>

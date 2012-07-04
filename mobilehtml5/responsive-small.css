@@ -1,0 +1,13 @@
+#header {
+  height: auto;
+}
+#content {
+  width: auto;
+  float: none;
+  margin: 20px 0;
+}
+#sidebar {
+  width: 100%;
+  float: none;
+}
+

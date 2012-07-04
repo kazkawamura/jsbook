@@ -1,0 +1,14 @@
+#pagewrap {
+  width: 96%;
+}
+#header {
+  width: 90%;
+  margin: auto;
+}
+#content {
+  width: 60%;
+  padding: 3%;
+}
+#sidebar {
+  width: 30%;
+}
