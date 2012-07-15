@@ -1,0 +1,93 @@
+<!DOCTYPE html> 
+<html>
+<head>
+  <title>INDEXDB SAMPLE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript">
+var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction;
+var indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB;  
+var db;
+ 
+$(document).ready(function() {
+  var request = window.indexedDB.open("MemberDatabase", 7);
+  request.onerror = function(event) {
+    alert('Error: ' + event.target.errorCode);
+  };  
+  request.onupgradeneeded = function(event) {  
+    db = request.result;
+    createObjectStore();
+  };
+  request.onsuccess = function(event) {
+    db = request.result;
+    if (window.webkitIndexedDB) {
+      var varReq = db.setVersion("1.0");
+      varReq.onsuccess = function(ev) {
+        try {
+          createObjectStore();
+        } catch (e) {
+          alert(e);
+        }
+        var objectStore = db.transaction("member").objectStore("member");
+        listMembers(objectStore);  
+      };
+    } else {
+      var objectStore = db.transaction("member").objectStore("member");
+      listMembers(objectStore);
+    }
+  }
+  $("#Add").click(addMember);
+});
+
+function createObjectStore() {
+  var objectStore = db.createObjectStore("member", {keyPath: "id", autoIncrement: true});
+  objectStore.createIndex("lastname", "lastname", {unique: false});
+}
+
+function addMember(event) {
+  var newMember = {
+    lastname: $("#lastname").val(),
+    firstname: $("#firstname").val()
+  };
+  var transaction = db.transaction(["member"], IDBTransaction.READ_WRITE);
+  var objectStore = transaction.objectStore("member");
+  var request = objectStore.add(newMember);
+  request.onsuccess = function(event) {
+    listMembers(objectStore);
+  }
+} 
+
+function deleteMember(event) {
+  var transaction = db.transaction(["member"], IDBTransaction.READ_WRITE);
+  var objectStore = transaction.objectStore("member");
+  var request = objectStore.delete(Number(event.target.id));
+  request.onsuccess = function(event) {
+    listMembers(objectStore);
+  }
+} 
+
+function listMembers(objectStore) {
+  $('#memberList').empty();
+  $(".del").off('click');
+  objectStore.openCursor().onsuccess = function(event) {
+    var cursor = event.target.result;
+    if (cursor) {
+      $("#memberList").append($("<li>" + cursor.value.lastname + " " + cursor.value.firstname + "<input type='button' id='" + cursor.key + "' class='del' value='×'/></li>"));
+      cursor.continue();
+    } else {
+      $(".del").on('click', deleteMember);
+    }
+  }
+}
+  </script>
+</head>
+<body>
+  <div>
+    firstname: <input id="firstname" name="firstname"/><br/>
+    lastname: <input id="lastname" name="lastname"/><br/>
+    <input type="button" id="Add" value="Add"/>
+  </div>
+  <ul id="memberList">
+  </ul>
+</body>
+</html>
