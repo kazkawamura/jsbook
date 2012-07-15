@@ -7,7 +7,7 @@
 $(document).ready(function() {
   $('#upload').bind('change', function(event) {
     var file = event.target.files[0];
-    var reader = FileReader();
+    var reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = function(e) {
       $('#imagepane').empty().append($('<img/>').attr('src', e.target.result));
