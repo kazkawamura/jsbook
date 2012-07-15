@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html>
 <head>
-  <title>INDEXDB SAMPLE</title>
+  <title>INDEXED DB SAMPLE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
   <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
   <script type="text/javascript">
@@ -10,33 +10,35 @@ var indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedD
 var db;
  
 $(document).ready(function() {
-  var request = window.indexedDB.open("MemberDatabase", 7);
-  request.onerror = function(event) {
-    alert('Error: ' + event.target.errorCode);
-  };  
-  request.onupgradeneeded = function(event) {  
-    db = request.result;
-    createObjectStore();
-  };
-  request.onsuccess = function(event) {
-    db = request.result;
-    if (window.webkitIndexedDB) {
-      var varReq = db.setVersion("1.0");
-      varReq.onsuccess = function(ev) {
-        try {
-          createObjectStore();
-        } catch (e) {
-          alert(e);
-        }
+  if (window.indexedDB) {
+    var request = window.indexedDB.open("MemberDatabase", 7);
+    request.onerror = function(event) {
+      alert('Error: ' + event.target.errorCode);
+    };  
+    request.onupgradeneeded = function(event) {  
+      db = request.result;
+      createObjectStore();
+    };
+    request.onsuccess = function(event) {
+      db = request.result;
+      if (window.webkitIndexedDB) {
+        var varReq = db.setVersion("1.0");
+        varReq.onsuccess = function(ev) {
+          try {
+            createObjectStore();
+          } catch (e) { } //expected.
+          var objectStore = db.transaction("member").objectStore("member");
+          listMembers(objectStore);  
+        };
+      } else {
         var objectStore = db.transaction("member").objectStore("member");
-        listMembers(objectStore);  
-      };
-    } else {
-      var objectStore = db.transaction("member").objectStore("member");
-      listMembers(objectStore);
+        listMembers(objectStore);
+      }
     }
+    $("#Add").click(addMember);
+  } else {
+    alert('unsupported');
   }
-  $("#Add").click(addMember);
 });
 
 function createObjectStore() {
