@@ -11,7 +11,7 @@ http.createServer(function (req, res) {
   db.open(function(err, db) {
     db.collection('members', function(err, collection) {
       var doc1 = {'firstname': firstname, 'lastname': lastname};
-      collection.insert(doc1, function(err, result) {
+      collection.insert(doc1, {safe:true}, function(err, result) {
         var stream = collection.find().streamRecords();
         stream.on('data',  function(item) {
           res.write(item.firstname + ' ' + item.lastname + '\n');
