@@ -1,0 +1,88 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+  <title>Hello</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+  <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+</head> 
+<body> 
+<div data-role="page">
+  <div data-role="header">
+    <h1>Hello</h1>
+  </div>
+  <div data-role="content">
+    <form action="target.html">
+    <div data-role="fieldcontain">
+      <label for="text">Text Input:</label>
+      <input type="text" name="text" id="text" value=""  />
+    </div>
+    <div data-role="fieldcontain">
+      <label for="text">Text Area:</label>
+      <textarea>This is textarea.</textarea>
+    </div>
+    <div data-role="fieldcontain">
+      <label for="search">Search Input:</label>
+      <input type="search" name="search" id="search" value=""  />
+    </div>
+    <div data-role="fieldcontain">
+      <label for="slider">Slider:</label>
+      <input type="range" name="slider" id="slider" value="5" min="0" max="10" />
+    </div>
+    <div data-role="fieldcontain">
+      <label for="toggle">Select Slider:</label>
+      <select name="toggle" id="toggle" data-role="slider">
+        <option value="off">Off</option>
+        <option value="on">On</option>
+      </select>
+    </div>
+	<fieldset data-role="controlgroup">
+	  <legend>Choose one of following:</legend>
+      <input type="radio" name="radio" id="r1" value="r1" checked="checked" />
+      <label for="r1">One</label>
+      <input type="radio" name="radio" id="r2" value="r2"/>
+      <label for="r2">Two</label>
+      <input type="radio" name="radio" id="r3" value="r3"/>
+      <label for="r3">Three</label>
+    </fieldset>
+	<fieldset data-role="controlgroup" data-type="horizontal">
+	  <legend>Choose one of following:</legend>
+      <input type="radio" name="radioh" id="rh1" value="rh1" checked="checked" />
+      <label for="rh1">One</label>
+      <input type="radio" name="radioh" id="rh2" value="rh2"/>
+      <label for="rh2">Two</label>
+      <input type="radio" name="radioh" id="rh3" value="rh3"/>
+      <label for="rh3">Three</label>
+    </fieldset>
+	<fieldset data-role="controlgroup">
+	  <legend>Choose some of following:</legend>
+      <input type="checkbox" name="check" id="c1" value="c1" checked="checked" />
+      <label for="c1">One</label>
+      <input type="checkbox" name="check" id="c2" value="c2"/>
+      <label for="c2">Two</label>
+      <input type="checkbox" name="check" id="c3" value="c3"/>
+      <label for="c3">Three</label>
+    </fieldset>
+	<fieldset data-role="controlgroup" data-type="horizontal">
+	  <legend>Choose some of following:</legend>
+      <input type="checkbox" name="checkh" id="ch1" value="ch1" checked="checked" />
+      <label for="ch1">One</label>
+      <input type="checkbox" name="checkh" id="ch2" value="ch2"/>
+      <label for="ch2">Two</label>
+      <input type="checkbox" name="checkh" id="ch3" value="ch3"/>
+      <label for="ch3">Three</label>
+    </fieldset>
+    <div data-role="fieldcontain">
+      <label for="select">Select:</label>
+      <select name="select" id="select">
+        <option value="one">One</option>
+        <option value="two">Two</option>
+        <option value="three">Three</option>
+      </select>
+    </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>
