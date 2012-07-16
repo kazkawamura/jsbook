@@ -1,0 +1,31 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+  <title>List with filer</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+  <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript">
+$(document).bind("mobileinit", function() {
+  $.mobile.listview.prototype.options.filterCallback = function(text, searchValue) {
+     return (text.toLowerCase().substr(0, searchValue.length) != searchValue);
+  };
+});
+  </script>
+  <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+</head> 
+<body> 
+<div data-role="page" id="next">
+  <div data-role="header">
+    <h1>ListView with filter</h1>
+  </div>
+  <div data-role="content">	
+    <ul data-role="listview" data-filter="true">
+      <li><a href="a.html">Apple</a></li>
+      <li><a href="p1.html">Peach</a></li>
+      <li><a href="p2.html">Pear</a></li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>
