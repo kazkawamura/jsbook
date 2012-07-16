@@ -6,10 +6,25 @@
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
   <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
   <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+  <script type="text/javascript">
+$(document).bind("pageinit", function() {
+  $("#Disable").click(function() {
+    $("#text").textinput('disable');
+    $("#textarea").textinput('disable');
+    $("#search").textinput('disable');
+    $("#slider").slider('disable');
+    $("#toggle").slider('disable');
+    $("input[type='checkbox']").checkboxradio('disable');
+    $("input[type='radio']").checkboxradio('disable');
+    $("#select").selectmenu('disable');
+  });
+});
+  </script>  
 </head> 
 <body> 
 <div data-role="page">
   <div data-role="header">
+    <input type="button" data-icon="check" value="Disable" id="Disable"/>
     <h1>Hello</h1>
   </div>
   <div data-role="content">
@@ -20,7 +35,7 @@
     </div>
     <div data-role="fieldcontain">
       <label for="text">Text Area:</label>
-      <textarea>This is textarea.</textarea>
+      <textarea id="textarea">This is textarea.</textarea>
     </div>
     <div data-role="fieldcontain">
       <label for="search">Search Input:</label>
