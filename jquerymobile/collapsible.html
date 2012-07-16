@@ -1,0 +1,42 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+  <title>Hello</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+  <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script>
+$(document).on('pageinit', function(event) {
+  var active = $.mobile.activePage;
+  alert('pageinit');
+});
+  </script>
+  <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+</head> 
+<body> 
+<div data-role="page" id="page1">
+  <div data-role="header">
+    <h1>Hello</h1>
+  </div>
+  <div data-role="content" id="content">
+<div data-role="collapsible" id="col">
+  <h1>This is header</h1>
+  <p>This is content. <a href="list.html">Next</a></p>
+</div>
+<div data-role="collapsible-set">
+  <div data-role="collapsible" data-collapsed="false">
+    <h3>Section1</h3>
+    <p>Section1 content</p>
+  </div>
+  <div data-role="collapsible">
+    <h3>Section2</h3>
+    <p>Section2 content</p>
+  </div>
+</div>
+  </div>
+  <div data-role="footer">
+    <h1>Sample</h1>
+  </div>
+</div>
+</body>
+</html>
