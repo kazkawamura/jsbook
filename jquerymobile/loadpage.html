@@ -11,7 +11,7 @@ $(document).bind("pageinit", function() {
   $("#load").click(function() {
     var nextpage = $.mobile.loadPage("external1.html");
     nextpage.done(function() {
-      var active = $.mobile.activePage;
+      var $active = $.mobile.activePage;
       var url = $.mobile.path.parseUrl("external1.html");
       alert("done");
     });
