@@ -16,18 +16,18 @@ $(document).bind("pageinit", function() {
   }
 });
 function checkBattery() {
-  var msg;
+  var msg_html;
   if (battery) {
-    msg = "<p>Battery status: " + battery.level * 100 + " %</p>";
+    msg_html = "<p>Battery status: " + battery.level * 100 + " %</p>";
     if (battery.charging) {
-      msg += "<p>Battery is charging. It would take " + battery.chargingTime +" sec.</p>";
+      msg_html += "<p>Battery is charging. It would take " + battery.chargingTime +" sec.</p>";
     } else {
-      msg += "<p>" + battery.dischargingTime + " sec remaining</p>";
+      msg_html += "<p>" + battery.dischargingTime + " sec remaining</p>";
     }
   } else {
-    msg = "<p>Battery status: unsupported</p>";
+    msg_html = "<p>Battery status: unsupported</p>";
   }
-  $('#battery').html(msg);
+  $('#battery').html(msg_html);
 }
   </script>
 </head> 
