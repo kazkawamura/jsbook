@@ -12,8 +12,7 @@ $(document).bind("pageinit", function() {
   navigator.geolocation.getCurrentPosition(function(position) {
     $("#location").html($('#loc').render(position));
   }, function(error) {
-    $("#location").html("<p>code: " + error.code + "</p>" +
-                      "<p>message: " + error.message + "</p>");
+    $("#location").html($('#error').render(error));
   });
 });
 $.views.helpers({
@@ -31,6 +30,10 @@ $.views.helpers({
 <p>向き: {{:coords.heading}}</p>
 <p>速度: {{:coords.speed}}</p>
 <p>時刻: {{:~format(timestamp)}}</p>
+  </script>
+  <script id="error" type="text/x-jsrender">
+<p>code: {{:code}}</p>
+<p>message: {{:message}}</p>
   </script>
 </head> 
 <body> 
