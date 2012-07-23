@@ -7,22 +7,28 @@
   <link type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />  
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+  <script src="http://borismoore.github.com/jsrender/jsrender.js">
+  </script>
   <script type="text/javascript">
 $(function(){
   $( "#slider" ).slider({
     range: true,
+    animate: 'slow',
     min: 0,
     max: 20000,
     step: 100,
     values: [ 5000, 10000 ],
     slide: function( event, ui ) {
-      $( "#result" ).text("価格: " + ui.values[ 0 ] + "円 - " + 
-                                    ui.values[ 1 ] + "円");
+      $( "#result" ).text($("#price").render({low: ui.values[ 0 ],
+                                              high: ui.values[ 1 ]}));
     }
   });
-  $( "#result" ).text("価格: " + $("#slider").slider("values", 0) + "円 - " + 
-                               $("#slider").slider("values", 1) + "円");
+  $( "#result" ).text($("#price").render({low: $("#slider").slider("values", 0),
+                                          high: $("#slider").slider("values", 1)}));
 });
+  </script>
+  <script id="price" type="text/x-jsrender">
+価格: {{:low}}円 - {{:high}}円
   </script>
 </head>
 <body>

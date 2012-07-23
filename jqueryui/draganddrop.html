@@ -6,20 +6,25 @@
   <link type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />	
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+  <script src="http://borismoore.github.com/jsrender/jsrender.js">
+  </script>
   <script type="text/javascript">
 $(function(){
   $(".draggable").draggable();
   $("#target").droppable({
     drop: function(event, ui) {
       $(this).addClass( "ui-state-highlight" )
-             .html( "Hello " + ui.draggable.text() );
+             .html($('#msg').render({msg: "Hello", text: ui.draggable.text()}));
     },
     out: function( event, ui ) {
       $(this).removeClass( "ui-state-highlight" )
-             .html( "Good bye " + ui.draggable.text() );
+             .html($('#msg').render({msg: "Good bye", text: ui.draggable.text()}));
     }
   });
 });
+  </script>
+  <script id="msg" type="text/x-jsrender">
+{{:msg}} {{:text}}!
   </script>
   <style type="text/css">
 .draggable {width: 50px; height: 30px; margin: 10px; float: left; 
