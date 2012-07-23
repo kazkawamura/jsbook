@@ -1,19 +1,24 @@
 <!DOCTYPE html> 
 <html> 
   <head> 
-  <title>WebWorker Sample</title> 
+  <title>WebMessaging Sample</title> 
   <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-  <script>
+  <script src="http://borismoore.github.com/jsrender/jsrender.js"></script>
+  <script type="text/javascript">
   window.addEventListener('message', function(event) {
-    $('#recieve').text('Revieced: ' + event.data);
-    event.source.postMessage("Hello " + event.data + "!", 'http://localhost:8888');
+    $('#receive').text($('#receiveMsg').render(event));
+    event.source.postMessage($('#replyMsg').render(event), 'http://localhost:8888');
   });
-$(document).ready(function() {
-});
+  </script>
+  <script id="receiveMsg" type="text/x-jsrender">
+Revieced: {{:data}}
+  </script>
+  <script id="replyMsg" type="text/x-jsrender">
+Hello {{:data}}!
   </script>
 </head> 
 <body> 
   <p>Revieced data from parent window</p>
-  <div id="recieve"></div>
+  <div id="receive"></div>
 </body>
 </html>

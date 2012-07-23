@@ -2,14 +2,19 @@
 <html> 
   <head> 
   <title>ServerSides Event Sample</title> 
+  <meta charset="utf-8">
   <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-  <script>
+  <script src="http://borismoore.github.com/jsrender/jsrender.js"></script>
+  <script type="text/javascript">
 $(document).ready(function() {
   var source = new EventSource('/events');
   source.onmessage = function(event) {
-    $('#result').append('<p>' + event.data + '</p>');
+    $('#result').append($('#data').render(event));
   }
 });
+  </script>
+  <script id="data" type="text/x-jsrender">
+<p>{{:data}}</p>
   </script>
 </head> 
 <body>

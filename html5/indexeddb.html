@@ -3,7 +3,9 @@
 <head>
   <title>INDEXED DB SAMPLE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <meta charset="utf-8">
   <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script src="http://borismoore.github.com/jsrender/jsrender.js"></script>
   <script type="text/javascript">
 var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction;
 var indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB;  
@@ -74,13 +76,17 @@ function listMembers(objectStore) {
   objectStore.openCursor().onsuccess = function(event) {
     var cursor = event.target.result;
     if (cursor) {
-      $("#memberList").append($("<li>" + cursor.value.lastname + " " + cursor.value.firstname + "<input type='button' id='" + cursor.key + "' class='del' value='×'/></li>"));
+      $("#memberList").append($("#member").render(cursor));
       cursor.continue();
     } else {
       $(".del").on('click', deleteMember);
     }
   }
 }
+  </script>
+  <script id="member" type="text/x-jsrender">
+<li>{{:value.lastname}} {{:value.firstname}}
+  <input type='button' id='{{:key}}' class='del' value='×'/></li>
   </script>
 </head>
 <body>

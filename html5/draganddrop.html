@@ -3,12 +3,13 @@
   <head> 
   <title>Drag & Drop Sample</title> 
   <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-  <script>
+  <script src="http://borismoore.github.com/jsrender/jsrender.js"></script>
+  <script type="text/javascript">
 $(document).ready(function() {
   $('#target').bind('drop', function(event) {
     event.preventDefault();
     var data = event.originalEvent.dataTransfer.getData('Text');
-    $('#target').html( "Hello " + data );
+    $('#target').html($('#data').render({data: data}));
   });
   $('#target').bind('dragover', function(event) {
     event.preventDefault();
@@ -17,6 +18,9 @@ $(document).ready(function() {
     event.originalEvent.dataTransfer.setData('Text', $(event.target).text());
   });
 });
+  </script>
+  <script id="data" type="text/x-jsrender">
+<p>Hello {{:data}}</p>
   </script>
   <style type="text/css">
 .draggable {width: 50px; height: 30px; margin: 10px; float: left; 

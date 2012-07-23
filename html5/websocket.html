@@ -3,16 +3,20 @@
   <head> 
   <title>WebSocket Sample</title> 
   <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-  <script>
+  <script src="http://borismoore.github.com/jsrender/jsrender.js"></script>
+  <script type="text/javascript">
 $(document).ready(function() {
-  var socket = new WebSocket('ws://localhost:8888/');
+  var socket = new WebSocket('ws://10.0.1.2:8888/');
   socket.onmessage = function (msg) {
-    $('#messages').append(msg.data + '<br/>');
+    $('#messages').append($('#msg').render(msg));
   };
   $('#send').click(function() {
     socket.send($('#input').val());
   });
 });
+  </script>
+  <script id="msg" type="text/x-jsrender">
+<p>{{:data}}</p>
   </script>
 </head> 
 <body> 
