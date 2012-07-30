@@ -5,7 +5,7 @@
   <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
   <script>
 $(document).ready(function() {
-  $('#drop').bind('drop', function(event) {
+  $('#drop').on('drop', function(event) {
     event.preventDefault();
     var file = event.originalEvent.dataTransfer.files[0];
     var reader = new FileReader();
@@ -14,7 +14,7 @@ $(document).ready(function() {
       $('#imagepane').empty().append($('<img/>').attr('src', e.target.result));
     };
   });
-  $('#drop').bind('dragover', function(event) {
+  $('#drop').on('dragover', function(event) {
     var type = event.originalEvent.dataTransfer.types.contains("Files");
     if (type){
         event.preventDefault();

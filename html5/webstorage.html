@@ -3,15 +3,16 @@
   <head> 
   <title>Web Storage Sample</title> 
   <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script src="http://10.0.1.2:8080/target/target-script-min.js#anonymous"></script>
   <script>
 $(document).ready(function() {
   $("#localValue").text(localStorage.getItem('sample'));
   $("#sessionValue").text(sessionStorage.getItem('sample'));
-  $("#local").bind('click', function() {
+  $("#local").on('click', function() {
     localStorage.setItem('sample', $("#input").val());
     $("#localValue").text(localStorage.getItem('sample'));  
   });
-  $("#session").bind('click', function() {
+  $("#session").on('click', function() {
     sessionStorage.setItem('sample', $("#input").val());
     $("#sessionValue").text(sessionStorage.getItem('sample'));  
   });

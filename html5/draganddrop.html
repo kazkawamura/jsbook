@@ -6,15 +6,15 @@
   <script src="http://borismoore.github.com/jsrender/jsrender.js"></script>
   <script type="text/javascript">
 $(document).ready(function() {
-  $('#target').bind('drop', function(event) {
+  $('#target').on('drop', function(event) {
     event.preventDefault();
     var data = event.originalEvent.dataTransfer.getData('Text');
     $('#target').html($('#data').render({data: data}));
   });
-  $('#target').bind('dragover', function(event) {
+  $('#target').on('dragover', function(event) {
     event.preventDefault();
   });
-  $('.draggable').bind('dragstart', function(event) {
+  $('.draggable').on('dragstart', function(event) {
     event.originalEvent.dataTransfer.setData('Text', $(event.target).text());
   });
 });

@@ -9,7 +9,7 @@ $(document).ready(function() {
   worker.onmessage = function(event) {
     alert(event.data);
   }
-  $('#start').bind('click', function(event) {
+  $('#start').on('click', function(event) {
     worker.postMessage($('#name').val());
   });
 });
