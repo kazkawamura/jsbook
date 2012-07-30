@@ -14,7 +14,7 @@ $(function(){
   $("#Taro").hello({
     event: 'mouseover'
   });
-  $("#Taro").bind("hellochanged", function() {
+  $("#Taro").on("hellochanged", function() {
     $('#result').text("Done!");
   });
 });

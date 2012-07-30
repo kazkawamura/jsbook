@@ -17,12 +17,12 @@
       if (originalStyle != null) {
         self.element.attr('style', originalStyle);
       }
-      self.element.unbind(self.options.event);
+      self.element.off(self.options.event);
     },
     _setOption: function(option, value) {
       if (option == 'event') {
-        self.element.unbind(self.options.event);
-        self.element.bind(value, self._eventCallback);
+        self.element.off(self.options.event);
+        self.element.on(value, self._eventCallback);
       } 
       $.Widget.prototype._setOption.apply(this, arguments);
     },
