@@ -9,7 +9,7 @@
   <script src="http://borismoore.github.com/jsrender/jsrender.js"></script>
   <script type="text/javascript">
 var battery = navigator.battery || navigator.mozBattery || navigator.webkitBattery;
-$(document).bind("pageinit", function() {
+$(document).on("pageinit", function() {
   checkBattery();
   if (battery) {
     battery.addEventListener("chargingchange", checkBattery());

@@ -7,8 +7,8 @@
   <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
   <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
   <script>
-$(document).bind("pageinit", function() {
-  $('#upload').bind('change', function(event) {
+$(document).on("pageinit", function() {
+  $('#upload').on('change', function(event) {
     var file = event.target.files[0];
     var reader = new FileReader();
     reader.readAsDataURL(file);

@@ -17,7 +17,7 @@
   <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
   <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
   <script>
-$(document).bind("pageinit", function() {
+$(document).on("pageinit", function() {
   window.addEventListener('deviceorientation', function(event) {
     var p = $('#box').position();
     var top = Math.min(Math.max(p.top + event.beta, 0), 

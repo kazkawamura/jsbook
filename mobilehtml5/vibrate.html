@@ -11,7 +11,7 @@ var vibrate = function() {alert('vibrate is not supported');};
 if (navigator.vibrate) vibrate = function(p) {navigator.vibrate(p);}
 if (navigator.mozVibrate) vibrate = function(p) {navigator.mozVibrate(p);}
 if (navigator.webkitVibrate) vibrate = function(p) {navigator.webkitVibrate(p);}
-$(document).bind("pageinit", function() {
+$(document).on("pageinit", function() {
   $('#vibrate').click(function() {
     vibrate([1000, 500, 2000]);
   });

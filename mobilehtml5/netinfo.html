@@ -8,7 +8,7 @@
   <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
   <script>
 var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-$(document).bind("pageinit", function() {
+$(document).on("pageinit", function() {
   updateNetInfo();
 });
 window.ononline = window.onoffline = updateNetInfo;

@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="responsive-small.css" media="screen and (max-width: 480px)">
   <script >
 $(function(){
-  $(window).bind("orientationchange load resize",function(){
+  $(window).on("orientationchange load resize",function(){
     $('#footer').text('footer width: ' + $(window).width());
   });
 });
