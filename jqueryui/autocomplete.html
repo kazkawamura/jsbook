@@ -19,7 +19,7 @@ $(function(){
   $('#fruit').autocomplete({
     minLength: 2,
     source: function(req, res) {
-      var result = Array();
+      var result = [];
       for (var i = 0; i < fruits.length; i++) {
         if (fruits[i].indexOf(req.term) == 0) {result.push(fruits[i]);}
       }
