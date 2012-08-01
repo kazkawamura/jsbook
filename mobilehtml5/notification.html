@@ -28,7 +28,7 @@ function notifyOnSpec() {
   });
   notification.onshow = function() {
     setTimeout(function() {notification.close()}, 15000);
-  }
+  };
   notification.onerror = function() {
     if (notification.permission == "default") {
       notification.requestPermission(function(permission) {
@@ -37,7 +37,7 @@ function notifyOnSpec() {
         }
       });
     }
-  }
+  };
 }
   </script>
 </head> 
