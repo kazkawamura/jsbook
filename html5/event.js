@@ -1,5 +1,5 @@
-var http = require("http")
-var fs = require("fs")
+var http = require("http");
+var fs = require("fs");
 var events = require("events");
 var emitter = new events.EventEmitter();
 

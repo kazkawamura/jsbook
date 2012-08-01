@@ -17,9 +17,9 @@ ws = new WebSocketServer({
   'httpServer' : server
 });
 
-var connections = Array();
+var connections = [];
 ws.on('request', function(request) {
-  connections.push(request.accept(null, 'http://localhost:8888'));   
+  connections.push(request.accept(null, 'http://10.0.1.2:8888'));   
 });
  
 ws.on('connect', function(connection) {
