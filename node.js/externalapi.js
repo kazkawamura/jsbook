@@ -6,7 +6,7 @@ http.createServer(function (req, res) {
   var addr = url.parse(req.url, true).query['addr'];
   var param = {
     address: addr,
-    sensor: false
+    sensor: true
   };
   var options = {
     host: 'maps.google.com',
@@ -16,7 +16,7 @@ http.createServer(function (req, res) {
     var body = '';
     clientRes.setEncoding('utf-8');
     clientRes.on('data', function(chunk) {
- 	 body += chunk
+ 	 body += chunk;
     });
     clientRes.on('end', function() {
       var result = JSON.parse(body);

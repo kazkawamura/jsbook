@@ -4,7 +4,7 @@ var fs = require('fs');
 var fileDir = './files';
 http.createServer(function (req, res) {
   var path = url.parse(req.url).pathname;
-  path = path.substr(path.lastIndexOf('/'));;
+  path = path.substr(path.lastIndexOf('/'));
   fs.readFile(fileDir + path, function(error, content) {
     if (error) {
       log.write(path + ': ' + new Date() + ' -> error\n');
