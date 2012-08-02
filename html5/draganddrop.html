@@ -9,13 +9,13 @@ $(document).ready(function() {
   $('#target').on('drop', function(event) {
     event.preventDefault();
     var data = event.originalEvent.dataTransfer.getData('Text');
-    $('#target').html($('#data').render({data: data}));
+    $(this).html($('#data').render({data: data}));
   });
   $('#target').on('dragover', function(event) {
     event.preventDefault();
   });
   $('.draggable').on('dragstart', function(event) {
-    event.originalEvent.dataTransfer.setData('Text', $(event.target).text());
+    event.originalEvent.dataTransfer.setData('Text', $(this).text());
   });
 });
   </script>
