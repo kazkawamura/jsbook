@@ -23,21 +23,19 @@ function notifyOnMozilla() {
   notification.show();
 }
 function notifyOnSpec() {
-  var notification = new Notification("New Email Received", {
-    body: "You have 5 new mails"
-  });
-  notification.onshow = function() {
-    setTimeout(function() {notification.close()}, 15000);
-  };
-  notification.onerror = function() {
-    if (notification.permission == "default") {
-      notification.requestPermission(function(permission) {
-        if (permission == "granted") {
-          notifyOnSpec();
-        }
-      });
-    }
-  };
+  var permission = Notification.permissionLevel();
+  if (permission == 'granted') {
+    var dialog = new Notification("New Email Received", {
+      body: "You have 5 new mails"
+    });
+    dialog.onshow = function() {
+      setTimeout(function() {dialog.close()}, 15000);
+    };
+  } else if (permission == 'default') {
+    Notification.requestPermission(function() {
+      notifyOnSpec();
+    });
+  }
 }
   </script>
 </head> 
