@@ -7,6 +7,6 @@ app.configure(function(){
 app.get('/hello/:id', function(req, res) {
   res.render('hello-partial',  {title: 'Partial sample', 
                         name: req.params.id,
-			friends: new Array('Taro', 'Jiro', 'Saburo')});
+			friends: ['Taro', 'Jiro', 'Saburo']});
 });
 app.listen(8888);
