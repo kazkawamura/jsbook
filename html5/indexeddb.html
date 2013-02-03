@@ -1,3 +1,11 @@
+<!--
+Supported Browsers
+ Desktop
+  Firefox 18
+  Google Chrome 24
+ Mobile
+  Firefox 18
+-->
 <!DOCTYPE html> 
 <html>
 <head>
@@ -13,7 +21,7 @@ var db;
  
 $(document).ready(function() {
   if (window.indexedDB) {
-    var request = window.indexedDB.open("MemberDatabase", 7);
+    var request = window.indexedDB.open("MemberDatabase", 8);
     request.onerror = function(event) {
       alert('Error: ' + event.target.errorCode);
     };  
@@ -23,19 +31,8 @@ $(document).ready(function() {
     };
     request.onsuccess = function(event) {
       db = request.result;
-      if (window.webkitIndexedDB) {
-        var varReq = db.setVersion("1.0");
-        varReq.onsuccess = function(ev) {
-          try {
-            createObjectStore();
-          } catch (e) { } //expected.
-          var objectStore = db.transaction("member").objectStore("member");
-          listMembers(objectStore);  
-        };
-      } else {
         var objectStore = db.transaction("member").objectStore("member");
         listMembers(objectStore);
-      }
     }
     $("#Add").click(addMember);
   } else {
@@ -44,6 +41,8 @@ $(document).ready(function() {
 });
 
 function createObjectStore() {
+  alert('upgrade');
+  //db.deleteObjectStore("member"); //Uncomment this line if you ran this code before.
   var objectStore = db.createObjectStore("member", {keyPath: "id", autoIncrement: true});
   objectStore.createIndex("lastname", "lastname", {unique: false});
 }
