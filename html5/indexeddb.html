@@ -21,6 +21,7 @@ var db;
  
 $(document).ready(function() {
   if (window.indexedDB) {
+    //Increment the number if you ran this code before.
     var request = window.indexedDB.open("MemberDatabase", 8);
     request.onerror = function(event) {
       alert('Error: ' + event.target.errorCode);
