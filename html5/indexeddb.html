@@ -41,7 +41,6 @@ $(document).ready(function() {
 });
 
 function createObjectStore() {
-  alert('upgrade');
   //db.deleteObjectStore("member"); //Uncomment this line if you ran this code before.
   var objectStore = db.createObjectStore("member", {keyPath: "id", autoIncrement: true});
   objectStore.createIndex("lastname", "lastname", {unique: false});
