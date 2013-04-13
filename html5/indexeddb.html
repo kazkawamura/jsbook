@@ -1,8 +1,8 @@
 <!--
 Supported Browsers
  Desktop
-  Firefox 18
-  Google Chrome 24
+  Firefox 20
+  Google Chrome 26
  Mobile
   Firefox 18
 -->
@@ -15,14 +15,14 @@ Supported Browsers
   <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
   <script src="http://borismoore.github.com/jsrender/jsrender.js"></script>
   <script type="text/javascript">
-var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction;
+var TRANSACTION_MODE = window.IDBTransaction.READ_WRITE || window.webkitIDBTransaction.READ_WRITE || "readwrite";
 var indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB;  
-var db;
+	var db;
  
 $(document).ready(function() {
   if (window.indexedDB) {
     //Increment the number if you ran this code before.
-    var request = window.indexedDB.open("MemberDatabase", 8);
+    var request = window.indexedDB.open("MemberDatabase", 10);
     request.onerror = function(event) {
       alert('Error: ' + event.target.errorCode);
     };  
@@ -52,7 +52,7 @@ function addMember(event) {
     lastname: $("#lastname").val(),
     firstname: $("#firstname").val()
   };
-  var transaction = db.transaction(["member"], IDBTransaction.READ_WRITE);
+  var transaction = db.transaction(["member"], TRANSACTION_MODE);
   var objectStore = transaction.objectStore("member");
   var request = objectStore.add(newMember);
   request.onsuccess = function(event) {
@@ -61,7 +61,7 @@ function addMember(event) {
 } 
 
 function deleteMember(event) {
-  var transaction = db.transaction(["member"], IDBTransaction.READ_WRITE);
+  var transaction = db.transaction(["member"], TRANSACTION_MODE);
   var objectStore = transaction.objectStore("member");
   var request = objectStore.delete(Number(event.target.id));
   request.onsuccess = function(event) {
